@@ -1,5 +1,29 @@
 MIT License
-
+async
+    attribute
+    callback
+    const
+    constructor
+    deleter
+    dictionary
+    enum
+    getter
+    includes
+    inherit
+    interface
+    iterable
+    maplike
+    mixin
+    namespace
+    partial
+    readonly
+    required
+    setlike
+    setter
+    static
+    stringifier
+    typedef
+    unrestricted
 Copyright 2025 GitHub
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
