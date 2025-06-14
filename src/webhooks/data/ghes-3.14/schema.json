@@ -2208,7 +2208,7 @@
   "check_run": {
     "completed": {
       "descriptionHtml": "<p>A check run was completed, and a conclusion is available.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -2344,28 +2344,13 @@
                     {
                       "type": "array of strings",
                       "name": "events",
-                      "description": "<p>The list of events for the GitHub app</p>",
+                      "description": "<p>The list of events for the GitHub app. Note that the <code>installation_target</code>, <code>security_advisory</code>, and <code>meta</code> events are not included because they are global events and not specific to an installation.</p>",
                       "isRequired": true
                     },
                     {
                       "type": "integer",
                       "name": "installations_count",
-                      "description": "<p>The number of installations associated with the GitHub app</p>"
-                    },
-                    {
-                      "type": "string",
-                      "name": "client_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string or null",
-                      "name": "webhook_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string",
-                      "name": "pem",
-                      "description": ""
+                      "description": "<p>The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.</p>"
                     }
                   ]
                 },
@@ -3704,7 +3689,7 @@
     },
     "created": {
       "descriptionHtml": "<p>A new check run was created.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -3840,28 +3825,13 @@
                     {
                       "type": "array of strings",
                       "name": "events",
-                      "description": "<p>The list of events for the GitHub app</p>",
+                      "description": "<p>The list of events for the GitHub app. Note that the <code>installation_target</code>, <code>security_advisory</code>, and <code>meta</code> events are not included because they are global events and not specific to an installation.</p>",
                       "isRequired": true
                     },
                     {
                       "type": "integer",
                       "name": "installations_count",
-                      "description": "<p>The number of installations associated with the GitHub app</p>"
-                    },
-                    {
-                      "type": "string",
-                      "name": "client_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string or null",
-                      "name": "webhook_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string",
-                      "name": "pem",
-                      "description": ""
+                      "description": "<p>The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.</p>"
                     }
                   ]
                 },
@@ -5200,7 +5170,7 @@
     },
     "requested_action": {
       "descriptionHtml": "<p>A check run completed, and someone requested a followup action that your app provides. Only the GitHub App someone requests to perform an action will receive the <code>requested_action</code> payload. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/developers/apps/guides/creating-ci-tests-with-the-checks-api\">Creating CI tests with the Checks API</a>.\"</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -5337,28 +5307,13 @@
                     {
                       "type": "array of strings",
                       "name": "events",
-                      "description": "<p>The list of events for the GitHub app</p>",
+                      "description": "<p>The list of events for the GitHub app. Note that the <code>installation_target</code>, <code>security_advisory</code>, and <code>meta</code> events are not included because they are global events and not specific to an installation.</p>",
                       "isRequired": true
                     },
                     {
                       "type": "integer",
                       "name": "installations_count",
-                      "description": "<p>The number of installations associated with the GitHub app</p>"
-                    },
-                    {
-                      "type": "string",
-                      "name": "client_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string or null",
-                      "name": "webhook_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string",
-                      "name": "pem",
-                      "description": ""
+                      "description": "<p>The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.</p>"
                     }
                   ]
                 },
@@ -6710,7 +6665,7 @@
     },
     "rerequested": {
       "descriptionHtml": "<p>Someone requested to re-run a check run. Only the GitHub App that someone requests to re-run the check will receive the <code>rerequested</code> payload.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check run. For information about check runs, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check runs, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checkrun\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs\">Check Runs</a>\" in the REST API documentation.</p>\n<p>For activity relating to check suites, use the <code>check-suite</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the <code>rerequested</code> and <code>requested_action</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -6846,28 +6801,13 @@
                     {
                       "type": "array of strings",
                       "name": "events",
-                      "description": "<p>The list of events for the GitHub app</p>",
+                      "description": "<p>The list of events for the GitHub app. Note that the <code>installation_target</code>, <code>security_advisory</code>, and <code>meta</code> events are not included because they are global events and not specific to an installation.</p>",
                       "isRequired": true
                     },
                     {
                       "type": "integer",
                       "name": "installations_count",
-                      "description": "<p>The number of installations associated with the GitHub app</p>"
-                    },
-                    {
-                      "type": "string",
-                      "name": "client_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string or null",
-                      "name": "webhook_secret",
-                      "description": ""
-                    },
-                    {
-                      "type": "string",
-                      "name": "pem",
-                      "description": ""
+                      "description": "<p>The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.</p>"
                     }
                   ]
                 },
@@ -8208,7 +8148,7 @@
   "check_suite": {
     "completed": {
       "descriptionHtml": "<p>All check runs in a check suite have completed, and a conclusion is available.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check suite. For information about check suites, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check suites, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites\">Check Suites</a>\" in the REST API documentation.</p>\n<p>For activity relating to check runs, use the <code>check_run</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the <code>requested</code> and <code>rerequested</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check suite. For information about check suites, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check suites, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites\">Check Suites</a>\" in the REST API documentation.</p>\n<p>For activity relating to check runs, use the <code>check_run</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the <code>requested</code> and <code>rerequested</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -9116,7 +9056,7 @@
     },
     "requested": {
       "descriptionHtml": "<p>Someone requested to run a check suite. By default, check suites are automatically created when you create a check run. For more information, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/mutations#createcheckrun\">the GraphQL API documentation for creating a check run</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/runs#create-a-check-run\">Create a check run</a>\" in the REST API documentation.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check suite. For information about check suites, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check suites, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites\">Check Suites</a>\" in the REST API documentation.</p>\n<p>For activity relating to check runs, use the <code>check_run</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the <code>requested</code> and <code>rerequested</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check suite. For information about check suites, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check suites, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites\">Check Suites</a>\" in the REST API documentation.</p>\n<p>For activity relating to check runs, use the <code>check_run</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the <code>requested</code> and <code>rerequested</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -10022,7 +9962,7 @@
     },
     "rerequested": {
       "descriptionHtml": "<p>Someone requested to re-run the check runs in a check suite. For more information, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/mutations#createchecksuite\">the GraphQL API documentation for creating a check suite</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites#create-a-check-suite\">Create a check suite</a>\" in the REST API documentation.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a check suite. For information about check suites, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check suites, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites\">Check Suites</a>\" in the REST API documentation.</p>\n<p>For activity relating to check runs, use the <code>check_run</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the <code>requested</code> and <code>rerequested</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThe API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a check suite. For information about check suites, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/guides/getting-started-with-the-checks-api\">Getting started with the Checks API</a>.\" For information about the APIs to manage check suites, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#checksuite\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/checks/suites\">Check Suites</a>\" in the REST API documentation.</p>\n<p>For activity relating to check runs, use the <code>check_run</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the <code>requested</code> and <code>rerequested</code> event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.</p>\n<p>Repository and organization webhooks only receive payloads for the <code>completed</code> event types in repositories.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThe API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty <code>pull_requests</code> array and a <code>null</code> value for <code>head_branch</code>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -13777,7 +13717,7 @@
   "delete": {
     "default": {
       "descriptionHtml": "",
-      "summaryHtml": "<p>This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including\nbranch and tag deletions, use the <a href=\"#push\"><code>push</code></a> webhook event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nThis event will not occur when more than three tags are deleted at once.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when a Git branch or tag is deleted. To subscribe to all pushes to a repository, including\nbranch and tag deletions, use the <a href=\"#push\"><code>push</code></a> webhook event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nThis event will not occur when more than three tags are deleted at once.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "object",
@@ -13854,7 +13794,7 @@
   "dependabot_alert": {
     "auto_dismissed": {
       "descriptionHtml": "<p>A Dependabot alert was automatically closed by a Dependabot auto-triage rule.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -14486,7 +14426,7 @@
     },
     "auto_reopened": {
       "descriptionHtml": "<p>A Dependabot alert, that had been automatically closed by a Dependabot auto-triage rule, was automatically reopened because the alert metadata or rule changed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -15118,7 +15058,7 @@
     },
     "created": {
       "descriptionHtml": "<p>A manifest file change introduced a vulnerable dependency, or a GitHub Security Advisory was published and an existing dependency was found to be vulnerable.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -15750,7 +15690,7 @@
     },
     "dismissed": {
       "descriptionHtml": "<p>A Dependabot alert was manually closed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -16382,7 +16322,7 @@
     },
     "fixed": {
       "descriptionHtml": "<p>A manifest file change removed a vulnerability.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -17014,7 +16954,7 @@
     },
     "reintroduced": {
       "descriptionHtml": "<p>A manifest file change introduced a vulnerable dependency that had previously been fixed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -17646,7 +17586,7 @@
     },
     "reopened": {
       "descriptionHtml": "<p>A Dependabot alert was manually reopened.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to Dependabot alerts.</p>\n<p>For more information about Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">About Dependabot alerts</a>.\" For information about the API to manage Dependabot alerts, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/dependabot/alerts\">Dependabot alerts</a>\" in the REST API documentation.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for Dependabot alerts are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -22774,6 +22714,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -23724,6 +23681,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -29406,7 +29380,7 @@
   "deployment_status": {
     "created": {
       "descriptionHtml": "<p>A new deployment status was created.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to deployment statuses. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments\">About deployments</a>.\" For information about the APIs to manage deployments, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments\">Deployments</a>\" in the REST API documentation.</p>\n<p>For activity relating to deployment creation, use the <code>deployment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nA webhook event is not fired for deployment statuses with an <code>inactive</code> state.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to deployment statuses. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/actions/deployment/about-deployments\">About deployments</a>.\" For information about the APIs to manage deployments, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#deployment\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/deployments/deployments\">Deployments</a>\" in the REST API documentation.</p>\n<p>For activity relating to deployment creation, use the <code>deployment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nA webhook event is not fired for deployment statuses with an <code>inactive</code> state.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -32339,7 +32313,7 @@
   "discussion": {
     "answered": {
       "descriptionHtml": "<p>A comment on the discussion was marked as the answer.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -33250,7 +33224,7 @@
     },
     "category_changed": {
       "descriptionHtml": "<p>The category of a discussion was changed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -33968,7 +33942,7 @@
     },
     "closed": {
       "descriptionHtml": "<p>A discussion was closed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -34602,7 +34576,7 @@
     },
     "created": {
       "descriptionHtml": "<p>A discussion was created.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -35236,7 +35210,7 @@
     },
     "deleted": {
       "descriptionHtml": "<p>A discussion was deleted.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -35870,7 +35844,7 @@
     },
     "edited": {
       "descriptionHtml": "<p>The title or body on a discussion was edited, or the category of the discussion was changed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -36538,7 +36512,7 @@
     },
     "labeled": {
       "descriptionHtml": "<p>A label was added to a discussion.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -37223,7 +37197,7 @@
     },
     "locked": {
       "descriptionHtml": "<p>A discussion was locked.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -37857,7 +37831,7 @@
     },
     "pinned": {
       "descriptionHtml": "<p>A discussion was pinned.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -38491,7 +38465,7 @@
     },
     "reopened": {
       "descriptionHtml": "<p>A discussion was reopened.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -39125,7 +39099,7 @@
     },
     "transferred": {
       "descriptionHtml": "<p>A discussion was transferred to another repository.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -41857,7 +41831,7 @@
     },
     "unanswered": {
       "descriptionHtml": "<p>A comment on the discussion was unmarked as the answer.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -42753,7 +42727,7 @@
     },
     "unlabeled": {
       "descriptionHtml": "<p>A label was removed from a discussion.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -43438,7 +43412,7 @@
     },
     "unlocked": {
       "descriptionHtml": "<p>A discussion was unlocked.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -44072,7 +44046,7 @@
     },
     "unpinned": {
       "descriptionHtml": "<p>A discussion was unpinned.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a comment on a discussion, use the <code>discussion_comment</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -44708,7 +44682,7 @@
   "discussion_comment": {
     "created": {
       "descriptionHtml": "<p>A comment on a discussion was created.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a discussion as opposed to comments on a discussion, use the <code>discussion</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a discussion as opposed to comments on a discussion, use the <code>discussion</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -45620,7 +45594,7 @@
     },
     "deleted": {
       "descriptionHtml": "<p>A comment on a discussion was deleted.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a discussion as opposed to comments on a discussion, use the <code>discussion</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a discussion as opposed to comments on a discussion, use the <code>discussion</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -46532,7 +46506,7 @@
     },
     "edited": {
       "descriptionHtml": "<p>A comment on a discussion was edited.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a discussion as opposed to comments on a discussion, use the <code>discussion</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/discussions\">GitHub Discussions</a>.\" For information about the API to manage discussions, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#discussion\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a discussion as opposed to comments on a discussion, use the <code>discussion</code> event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for GitHub Discussions are currently in public preview and subject to change.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -51318,28 +51292,13 @@
                 {
                   "type": "array of strings",
                   "name": "events",
-                  "description": "<p>The list of events for the GitHub app</p>",
+                  "description": "<p>The list of events for the GitHub app. Note that the <code>installation_target</code>, <code>security_advisory</code>, and <code>meta</code> events are not included because they are global events and not specific to an installation.</p>",
                   "isRequired": true
                 },
                 {
                   "type": "integer",
                   "name": "installations_count",
-                  "description": "<p>The number of installations associated with the GitHub app</p>"
-                },
-                {
-                  "type": "string",
-                  "name": "client_secret",
-                  "description": ""
-                },
-                {
-                  "type": "string or null",
-                  "name": "webhook_secret",
-                  "description": ""
-                },
-                {
-                  "type": "string",
-                  "name": "pem",
-                  "description": ""
+                  "description": "<p>The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.</p>"
                 }
               ]
             },
@@ -52681,28 +52640,13 @@
                 {
                   "type": "array of strings",
                   "name": "events",
-                  "description": "<p>The list of events for the GitHub app</p>",
+                  "description": "<p>The list of events for the GitHub app. Note that the <code>installation_target</code>, <code>security_advisory</code>, and <code>meta</code> events are not included because they are global events and not specific to an installation.</p>",
                   "isRequired": true
                 },
                 {
                   "type": "integer",
                   "name": "installations_count",
-                  "description": "<p>The number of installations associated with the GitHub app</p>"
-                },
-                {
-                  "type": "string",
-                  "name": "client_secret",
-                  "description": ""
-                },
-                {
-                  "type": "string or null",
-                  "name": "webhook_secret",
-                  "description": ""
-                },
-                {
-                  "type": "string",
-                  "name": "pem",
-                  "description": ""
+                  "description": "<p>The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.</p>"
                 }
               ]
             },
@@ -93172,7 +93116,7 @@
   "projects_v2": {
     "closed": {
       "descriptionHtml": "<p>A project in the organization was closed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -93700,7 +93644,7 @@
     },
     "created": {
       "descriptionHtml": "<p>A project in the organization was created.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -94228,7 +94172,7 @@
     },
     "deleted": {
       "descriptionHtml": "<p>A project in the organization was deleted.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -94756,7 +94700,7 @@
     },
     "edited": {
       "descriptionHtml": "<p>The title, description, or README of a project in the organization was changed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -95361,7 +95305,7 @@
     },
     "reopened": {
       "descriptionHtml": "<p>A project in the organization was reopened.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a item on a project, use the <code>projects_v2_item</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -95891,7 +95835,7 @@
   "projects_v2_item": {
     "archived": {
       "descriptionHtml": "<p>An item on an organization project was archived. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project\">Archiving items from your project</a>.\"</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -96157,7 +96101,7 @@
     },
     "converted": {
       "descriptionHtml": "<p>A draft issue in an organization project was converted to an issue.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -96423,7 +96367,7 @@
     },
     "created": {
       "descriptionHtml": "<p>An item was added to a project in the organization.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -96663,7 +96607,7 @@
     },
     "deleted": {
       "descriptionHtml": "<p>An item was deleted from a project in the organization.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -96903,7 +96847,7 @@
     },
     "edited": {
       "descriptionHtml": "<p>The values or state of an item in an organization project were changed. For example, the value of a field was updated, the body of a draft issue was changed, or a draft issue was converted to an issue.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -97149,7 +97093,7 @@
     },
     "reordered": {
       "descriptionHtml": "<p>The position of an item in an organization project was changed. For example, an item was moved above or below another item in the table or board layout.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -97415,7 +97359,7 @@
     },
     "restored": {
       "descriptionHtml": "<p>An archived item on an organization project was restored from the archive. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project\">Archiving items from your project</a>.\"</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">About Projects</a>.\" For information about the Projects API, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#projectv2item\">the GraphQL documentation</a>.</p>\n<p>For activity relating to a project (instead of an item on a project), use the <code>projects_v2</code> event. For activity relating to Projects (classic), use the <code>project</code>, <code>project_card</code>, and <code>project_column</code> events instead.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nWebhook events for projects are currently in public preview and subject to change. To share feedback about projects webhooks with GitHub, see the <a href=\"https://github.com/orgs/community/discussions/17405\">Projects webhook feedback discussion</a>.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -109550,6 +109494,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -110500,6 +110461,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -113151,6 +113129,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -114101,6 +114096,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -120312,6 +120324,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -121262,6 +121291,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -133968,6 +134014,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -134918,6 +134981,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -137569,6 +137649,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -138519,6 +138616,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -141170,6 +141284,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -142120,6 +142251,23 @@
                       "type": "boolean",
                       "name": "anonymous_access_enabled",
                       "description": "<p>Whether anonymous git access is enabled for this repository</p>"
+                    },
+                    {
+                      "type": "object",
+                      "name": "code_search_index_status",
+                      "description": "<p>The status of the code search index for this repository</p>",
+                      "childParamsGroups": [
+                        {
+                          "type": "boolean",
+                          "name": "lexical_search_ok",
+                          "description": ""
+                        },
+                        {
+                          "type": "string",
+                          "name": "lexical_commit_sha",
+                          "description": ""
+                        }
+                      ]
                     }
                   ]
                 },
@@ -190326,7 +190474,7 @@
   "push": {
     "default": {
       "descriptionHtml": "",
-      "summaryHtml": "<p>This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,\nwhen a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch\nand tag deletions, use the <a href=\"#delete\"><code>delete</code></a> webhook event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nEvents will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is a push to a repository branch. This includes when a commit is pushed, when a commit tag is pushed,\nwhen a branch is deleted, when a tag is deleted, or when a repository is created from a template. To subscribe to only branch\nand tag deletions, use the <a href=\"#delete\"><code>delete</code></a> webhook event.</p>\n<p>To subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nEvents will not be created if more than 5000 branches are pushed at once. Events will not be created for tags when more than three tags are pushed at once.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -190703,7 +190851,7 @@
   "registry_package": {
     "published": {
       "descriptionHtml": "<p>A package was published to a registry.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to GitHub Packages. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages\">Introduction to GitHub Packages</a>.\" For information about the APIs to manage GitHub Packages, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/packages\">Packages</a>\" in the REST API documentation.</p>\n<p>To install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nGitHub recommends that you use the newer <code>package</code> event instead.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to GitHub Packages. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages\">Introduction to GitHub Packages</a>.\" For information about the APIs to manage GitHub Packages, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/packages\">Packages</a>\" in the REST API documentation.</p>\n<p>To install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nGitHub recommends that you use the newer <code>package</code> event instead.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -191769,7 +191917,7 @@
     },
     "updated": {
       "descriptionHtml": "<p>A package that was previously published to a registry was updated.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to GitHub Packages. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages\">Introduction to GitHub Packages</a>.\" For information about the APIs to manage GitHub Packages, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/packages\">Packages</a>\" in the REST API documentation.</p>\n<p>To install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nGitHub recommends that you use the newer <code>package</code> event instead.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to GitHub Packages. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.14/packages/learn-github-packages/introduction-to-github-packages\">Introduction to GitHub Packages</a>.\" For information about the APIs to manage GitHub Packages, see <a href=\"https://docs.github.com/enterprise-server@3.14/graphql/reference/objects#package\">the GraphQL API documentation</a> or \"<a href=\"https://docs.github.com/enterprise-server@3.14/rest/packages\">Packages</a>\" in the REST API documentation.</p>\n<p>To install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.</p>\n<div class=\"ghd-alert ghd-alert-accent\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg></p>\n<p>\nGitHub recommends that you use the newer <code>package</code> event instead.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -192682,6 +192830,12 @@
                   "isRequired": true
                 },
                 {
+                  "type": "string or null",
+                  "name": "digest",
+                  "description": "",
+                  "isRequired": true
+                },
+                {
                   "type": "string",
                   "name": "state",
                   "description": "<p>State of the release asset.</p>",
@@ -193243,6 +193397,12 @@
                 {
                   "type": "integer",
                   "name": "size",
+                  "description": "",
+                  "isRequired": true
+                },
+                {
+                  "type": "string or null",
+                  "name": "digest",
                   "description": "",
                   "isRequired": true
                 },
@@ -193869,6 +194029,12 @@
                 {
                   "type": "integer",
                   "name": "size",
+                  "description": "",
+                  "isRequired": true
+                },
+                {
+                  "type": "string or null",
+                  "name": "digest",
                   "description": "",
                   "isRequired": true
                 },
@@ -195172,6 +195338,12 @@
                 {
                   "type": "integer",
                   "name": "size",
+                  "description": "",
+                  "isRequired": true
+                },
+                {
+                  "type": "string or null",
+                  "name": "digest",
                   "description": "",
                   "isRequired": true
                 },
@@ -202036,7 +202208,7 @@
   "repository_vulnerability_alert": {
     "create": {
       "descriptionHtml": "<p>A repository vulnerability alert was created.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg></p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -202318,7 +202490,7 @@
     },
     "dismiss": {
       "descriptionHtml": "<p>A repository vulnerability alert was dismissed.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg></p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -202613,7 +202785,7 @@
     },
     "reopen": {
       "descriptionHtml": "<p>A previously dismissed or resolved repository vulnerability alert was reopened.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg></p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
@@ -202895,7 +203067,7 @@
     },
     "resolve": {
       "descriptionHtml": "<p>A repository vulnerability alert was marked as resolved.</p>",
-      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
+      "summaryHtml": "<p>This event occurs when there is activity relating to a security vulnerability alert in a repository.</p>\n<div class=\"ghd-alert ghd-alert-attention\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg></p>\n<p>\n<strong>Closing down notice:</strong> This event is closing down. Use the <code>dependabot_alert</code> event instead.</p>\n</div>",
       "bodyParameters": [
         {
           "type": "string",
