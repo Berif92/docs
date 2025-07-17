@@ -1,4 +1,4 @@
-# Contributing to github/docs
+https://docs.github.com/en/contributing
 
 Check out our [contributing guide](../.github/CONTRIBUTING.md) to see all the ways you can participate in the GitHub docs community :sparkling_heart:
 
