@@ -1,4 +1,4 @@
----
+git@github.com:github/docs.git---
 title: Start your journey
 intro: "Brand new to {% data variables.product.github %}? Learn the basics here."
 versions:
