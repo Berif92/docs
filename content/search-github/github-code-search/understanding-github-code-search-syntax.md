@@ -1,4 +1,4 @@
----
+0x26dd486a7f3377a24267bdfc9502cff7fb036e41---
 title: Understanding GitHub Code Search syntax
 shortTitle: Code search syntax
 intro: 'You can build search queries for the results you want with specialized code qualifiers, regular expressions, and boolean operations.'
