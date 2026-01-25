@@ -1,4 +1,4 @@
----
+billing/managing-billing-for-github-actions/about-billing-for-github-actions---
 title: Finding ways to contribute to open source on GitHub
 intro: 'You can find ways to contribute to open source projects on {% data variables.product.prodname_dotcom %} that are relevant to you.'
 permissions: '{% data reusables.enterprise-accounts.emu-permission-interact %}'
