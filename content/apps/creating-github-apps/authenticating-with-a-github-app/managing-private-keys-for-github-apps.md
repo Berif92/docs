@@ -1,4 +1,27 @@
----
+---#!/usr/bin/env pwsh
+
+$client_id = YOUR_CLIENT_ID
+
+$private_key_path = "YOUR_PATH_TO_PEM"
+
+$header = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes((ConvertTo-Json -InputObject @{
+  alg = "RS256"
+  typ = "JWT"
+}))).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+
+$payload = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes((ConvertTo-Json -InputObject @{
+  iat = [System.DateTimeOffset]::UtcNow.AddSeconds(-10).ToUnixTimeSeconds()
+  exp = [System.DateTimeOffset]::UtcNow.AddMinutes(10).ToUnixTimeSeconds()
+  iss = $client_id
+}))).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+
+$rsa = [System.Security.Cryptography.RSA]::Create()
+$rsa.ImportFromPem((Get-Content $private_key_path -Raw))
+
+$signature = [Convert]::ToBase64String($rsa.SignData([System.Text.Encoding]::UTF8.GetBytes("$header.$payload"), [System.Security.Cryptography.HashAlgorithmName]::SHA256, [System.Security.Cryptography.RSASignaturePadding]::Pkcs1)).TrimEnd('=').Replace('+', '-').Replace('/', '_')
+$jwt = "$header.$payload.$signature"
+Write-Host $jwt
+
 title: Managing private keys for GitHub Apps
 shortTitle: Manage private keys
 intro: 'You can manage private keys to authenticate with your {% data variables.product.prodname_github_app %}.'
